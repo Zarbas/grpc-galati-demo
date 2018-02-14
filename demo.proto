@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "io.grpc.examples.helloworld";
+option java_outer_classname = "HelloWorldProto";
+option objc_class_prefix = "HLW";
+
+package demo;
+
+service DataTransfer {
+
+    rpc sendInt (IntData) returns (Response) {}
+    rpc sendString (StringData) returns (Response) {}
+    rpc sendFile (stream FileData) returns (Response) {}
+}
+
+message IntData {
+    int32 data = 1;
+}
+
+message StringData {
+    string data = 1;
+}
+
+message FileData {
+    bytes data = 1;
+}
+
+message Response {
+    int32 code = 1;
+}
